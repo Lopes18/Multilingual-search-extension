@@ -1,0 +1,44 @@
+{
+   "manifest_version": 2,
+   "name": "Dictionary Search",
+   "permissions": [ "contextMenus" , "tabs","storage","activeTab"],
+   "version": "2.1",
+   "author": "Pedro",
+   "background": {
+      "persistent": true,
+      "page":"background.html"
+   },
+   "description": "Adds context menu item to search selected word on Jisho and a shortcut to do that automatically.",
+   "browser_action": {
+      "default_popup" : "browser_action.html"
+   },
+   "content_scripts" : [{
+      "js": ["content.js"],
+      "matches": [ "<all_urls>" ]
+   } ],
+
+   "commands": {
+      "_execute_browser_action": {
+         "suggested_key": {
+            "default": "Ctrl+Shift+X"
+         },
+         "description" : "Opens browser action"
+      },
+
+     "Search_word": {
+         "suggested_key": { "default": "Ctrl+X" },
+         "description" : "Opens new tab with word search."
+      },
+      "Change_dictionary":{
+         "suggested_key": {"default":"Ctrl+Z"},
+         "description" : "Changes the dictionary."
+
+      },
+      "Change_dictionary_backward":{
+         "suggested_key": {"default":"Ctrl+Shift+Z"},
+         "description": "Changes the dictionary backwards."
+      }
+
+   }
+
+}
